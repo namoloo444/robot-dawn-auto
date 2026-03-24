@@ -1,0 +1,16 @@
+name: Robot Dawn Namolo
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  gain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execution Dawn
+        run: |
+          curl -X POST https://www.dawnvalidator.com \
+          -H "Content-Type: application/json" \
+          -d '{"extensionId":"fpdkjdnhkakefebpekbdhillbhonfjjp"}'
+          echo "Point Dawn validé avec succès !"
