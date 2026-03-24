@@ -1,4 +1,4 @@
-name: Robot Dawn Namolo
+name: Robot Dawn Fantome
 on:
   schedule:
     - cron: '*/5 * * * *'
@@ -8,9 +8,11 @@ jobs:
   gain:
     runs-on: ubuntu-latest
     steps:
-      - name: Execution Dawn
+      - name: Execution Discrete
         run: |
-          curl -X POST https://www.dawnvalidator.com \
-          -H "Content-Type: application/json" \
-          -d '{"extensionId":"fpdkjdnhkakefebpekbdhillbhonfjjp"}'
-          echo "Point Dawn validé avec succès !"
+          curl -X GET "https://api.dawninternet.com" \
+          -H "Authorization: Bearer eyJDZXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkaWQ6Y2hjpdnk6Y21uM3lkOWtrMDAyNTBjbDZ5MHR6ZnFmailslnByaXZ5X2lkIjoizGIkOnByaXZ50mNtbyN5ZDlrazAwMjUwY2w2eTB0emZXZmoiLCJleHAtOjE3NzY5MDkwMjMslmloiCl6MTc3NDMxNzAyMywidG9rZW5fdHlwZSI6InNlc3Npb24ifQ.5jdzjJP5Jwu_lu2-G37fOFtjVTJt8KuQUojVOFPLPKI" \
+          -H "User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36" \
+          -H "Origin: chrome-extension://fpdkjdnhkakefebpekbdhillbhonfjjp" \
+          -H "Accept: */*"
+          echo "Points Dawn extraits avec succes !"
