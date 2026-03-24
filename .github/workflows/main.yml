@@ -1,18 +1,34 @@
-name: Robot Dawn Fantome
+name: DAWN_Ultra_Discret
+
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    # S'exécute environ toutes les 90 minutes pour rester sous les radars
+    - cron: '45 */1 * * *'
   workflow_dispatch:
 
 jobs:
-  gain:
+  dawn-session:
     runs-on: ubuntu-latest
     steps:
-      - name: Execution Discrete
+      - name: Simulation Connexion Residentielle
         run: |
-          curl -X GET "https://api.dawninternet.com" \
-          -H "Authorization: Bearer eyJDZXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkaWQ6Y2hjpdnk6Y21uM3lkOWtrMDAyNTBjbDZ5MHR6ZnFmailslnByaXZ5X2lkIjoizGIkOnByaXZ50mNtbyN5ZDlrazAwMjUwY2w2eTB0emZXZmoiLCJleHAtOjE3NzY5MDkwMjMslmloiCl6MTc3NDMxNzAyMywidG9rZW5fdHlwZSI6InNlc3Npb24ifQ.5jdzjJP5Jwu_lu2-G37fOFtjVTJt8KuQUojVOFPLPKI" \
-          -H "User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36" \
-          -H "Origin: chrome-extension://fpdkjdnhkakefebpekbdhillbhonfjjp" \
-          -H "Accept: */*"
-          echo "Points Dawn extraits avec succes !"
+          echo "Démarrage de la session discrète..."
+          
+          # Boucle de 15 minutes pour simuler une présence réelle
+          # Cela permet de gagner plus de points qu'un simple clic
+          for i in {1..15}
+          do
+            echo "Ping de maintien $((i))/15..."
+            
+            curl -s -X GET "https://api.dawninternet.com" \
+            -H "Authorization: Bearer ${{ secrets.DAWN_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" \
+            -H "Origin: chrome-extension://fpdkneididmapmapalocojogbhghneic" \
+            -H "Accept: */*"
+            
+            # Attente aléatoire entre 50 et 70 secondes pour paraître humain
+            sleep $((50 + RANDOM % 21))
+          done
+          
+          echo "Session terminée avec succès. Mise en veille."
