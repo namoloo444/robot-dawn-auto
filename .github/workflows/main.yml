@@ -1,34 +1,31 @@
-name: DAWN_Ultra_Discret
-
+name: DAWN_Turbo_Permanent
 on:
   schedule:
-    # S'exécute environ toutes les 90 minutes pour rester sous les radars
-    - cron: '45 */1 * * *'
+    - cron: '*/10 * * * *' # S'exécute TOUTES LES 10 MINUTES
   workflow_dispatch:
 
 jobs:
   dawn-session:
     runs-on: ubuntu-latest
     steps:
-      - name: Simulation Connexion Residentielle
+      - name: Simulation Connexion Haute Frequence
         run: |
-          echo "Démarrage de la session discrète..."
+          echo "Demarrage de la session Turbo..."
           
-          # Boucle de 15 minutes pour simuler une présence réelle
-          # Cela permet de gagner plus de points qu'un simple clic
-          for i in {1..15}
+          # Boucle de 8 minutes pour maintenir la connexion active
+          for i in {1..8}
           do
-            echo "Ping de maintien $((i))/15..."
+            echo "Ping de maintien $((i))/8..."
             
             curl -s -X GET "https://api.dawninternet.com" \
             -H "Authorization: Bearer ${{ secrets.DAWN_TOKEN }}" \
             -H "Content-Type: application/json" \
             -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" \
-            -H "Origin: chrome-extension://fpdkneididmapmapalocojogbhghneic" \
+            -H "Origin: chrome-extension://fpdkjdnhkcodbhdaandneaddalibale" \
             -H "Accept: */*"
             
-            # Attente aléatoire entre 50 et 70 secondes pour paraître humain
-            sleep $((50 + RANDOM % 21))
+            # Attente de 60 secondes entre chaque ping
+            sleep 60
           done
           
-          echo "Session terminée avec succès. Mise en veille."
+          echo "Session Turbo terminee avec succes."
